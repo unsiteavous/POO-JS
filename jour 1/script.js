@@ -1,73 +1,83 @@
 class forme {
-  // initialisation :
+  // Définition de nos propriétés
+  ID
   cote;
+  couleur;
   aire;
-  couleur = "black";
 
-  constructor(cote, couleur){
-    this.cote = cote;
-    this.couleur = couleur;
+  // Constructeur de la forme :
+  constructor(ID, coteDonneParLUtilisateur, couleurDonneParLUtilisateur) {
+    this.cote = coteDonneParLUtilisateur;
+    this.couleur = couleurDonneParLUtilisateur;
+    this.ID = ID;
+    // toutes les formes apparaissent sur la page, au moment où on les crée :
+    this.apparaitreSurLaPage();
   }
 
-  calculAire(cote){
-    this.aire = 'et ben non';
+  /**
+   * Méthode qui permet de créer la div avec le bon ID sur la page.
+   *
+   * @return  {void}  La div est ajoutée au body.
+   */
+  apparaitreSurLaPage() {
+    document.body.innerHTML += `<div id="${this.ID}"></div>`;
   }
-
 }
 
 
-let premierObjetForme = new forme(20,"orange");
-console.log(premierObjetForme)
-
-let secondObjetForme = new forme(50,"blue");
-
-console.log(secondObjetForme)
 
 
-
-// ENFANT
+/**
+ * La classe carré permet de créer un carré, et hérite de la classe forme
+ */
 class carre extends forme {
 
-  constructor(cote,couleur){
-    // j'appelle le parent pour lui demander de faire son travail
-    super(cote,couleur);
-    // J'appelle les méthodes de l'enfant lui-même
-    super.calculAire(this.cote);
+  /**
+   * Le constructeur du carré appelle le constructeur parent (super), puis fait la mise en forme nécessaire à un carré.
+   *
+   * @param   {number}  ID                                       L'id de notre forme
+   * @param   {number}  coteLorsqueUtilisateurInstancieCarre     la longueur du côté donnée par l'utilisateur lors de l'instanciation
+   * @param   {string}  couleurLorsqueUtilisateurInstancieCarre  La couleur choisie par l'utiliseur lors de l'instanciation
+   *
+   * @return  {void}                                           la modification est directement faite sur le html, on ne retourne rien.
+   */
+  constructor(ID, coteLorsqueUtilisateurInstancieCarre, couleurLorsqueUtilisateurInstancieCarre) {
+    super(ID, coteLorsqueUtilisateurInstancieCarre, couleurLorsqueUtilisateurInstancieCarre);
+
+    // On vient compléter la mise en forme faite par le parent
+    this.miseEnForme();
   }
 
-  calculAire(cote){
-    this.aire = cote*cote;
+  // on fait la mise en forme du carré
+  miseEnForme() {
+    let carre = document.getElementById(this.ID);
+    carre.style.backgroundColor = this.couleur;
+    carre.style.width = this.cote + "px";
+    carre.style.height = this.cote + "px";
   }
-
-
 
 }
 
-let premierCarre = new carre(10,"yellow");
+let carre1 = new carre(7, 20, "orange");
+console.log(carre1);
 
-console.log(premierCarre)
 
-
-// PETIT ENFANT
-class cercle extends carre {
-  radius = 100;
-
-  constructor(rayon,couleur){
-    let diametre = rayon*2;
-    super(diametre, couleur);
-
+class rond extends carre {
+  constructor(ID, diametre, couleur) {
+    super(ID, diametre, couleur)
+    this.miseEnForme();
   }
+
+  // On fait la mise en forme du rond EN PLUS de celle du carré.
+  miseEnForme() {
+    // Mise en forme du carré
+    super.miseEnForme();
+    // À laquelle on ajoute la mise en forme propre au cercle :
+    let rond = document.getElementById(this.ID);
+    rond.style.borderRadius = "100%";
+  }
+
 }
 
-let premierCercle = new cercle(10,"green");
-
-
-
-
-
-
-
-
-
-
-
+let rond1 = new rond(12, 50, "red");
+console.log(rond1);

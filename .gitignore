@@ -1,2 +1,2 @@
-jour\s[*]/
+jour\s[1-9]+
 poo_javascript

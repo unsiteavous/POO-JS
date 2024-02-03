@@ -1,0 +1,153 @@
+body * {
+    font-family: comfortaa;
+}
+
+body > p {
+    text-align: right;
+    margin-right: 10px;
+  }
+
+select,
+input,
+button {
+    font-size: 15px;
+}
+
+h1,
+.créerNouvelleTache h2 {
+    text-align: center;
+}
+
+.container {
+    margin: 150px auto;
+    width: 50%;
+    border: 5px solid gray;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 10px 10px 30px black;
+}
+
+.créerNouvelleTache {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin: 0 auto;
+}
+
+.créerNouvelleTache>div {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+input,
+button,
+select {
+    margin: 5px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    border: 1px solid grey;
+}
+
+input:focus,
+button:focus,
+select:focus {
+    border-color: green;
+    outline: 0;
+    box-shadow: 0 0 3px green;
+}
+
+#outils {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    border: 3px solid gray;
+    margin: 30px -20px 10px -20px;
+    padding: 0 20px;
+    color: white;
+}
+
+#outils>div {
+    display: flex;
+    align-items: center;
+}
+
+.ordre {
+    cursor: pointer;
+    border: 3px solid white;
+    border-radius: 20px;
+    padding: 2px 2px 0 2px;
+}
+
+.listeDesTaches h3 {
+    margin: 0;
+    width: 60%;
+    margin-top: -10px
+}
+
+.checkbox {
+    font-size: 40px;
+    margin: -10px 10px 0px -10px;
+    cursor: pointer;
+}
+
+.checked::before {
+    content: "🗸";
+    font-size: 30px;
+    margin-left: 4px;
+    margin-right: -27px;
+}
+
+.listeDesTaches>div {
+    border: 3px solid;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.listeDesTaches>div>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.priorité {
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.basse {
+    background-color: chartreuse;
+}
+
+.moyenne {
+    background-color: orange;
+}
+
+.élevée {
+    background-color: darkred;
+    color: white;
+}
+
+hr {
+    position: absolute;
+    width: 0%;
+    left: 50px;
+    top: 19px;
+    opacity: 0;
+}
+.fullHr{
+    transition: width 8s linear;
+    width: 90%;
+    opacity: 1;
+}
+
+.disappear {
+    transition: opacity 8s cubic-bezier(1, 0.8, 0.6, 0.4);;
+    opacity: 0;
+}

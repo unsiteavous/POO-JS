@@ -1,84 +1,43 @@
-export default class Tache {
-    #id;
-    #titre;
-    #échéance;
-    #priorité;
+// On definit la classe Todolist, exportable et par defaut :
+// ============================================================
+// Tache
+// ============================================================
+    
+// On definit ensuite 4 proprietes privees :
+// - #id : il sera construit aleatoirement
+// - #titre
+// - #echeance
+// - #priorite : trois valeurs possibles [basse, moyenne, elevee]
 
-    constructor(titre, échéance, priorité, id = "À créer") {
-        this.id = id;
-        this.titre = titre;
-        this.échéance = échéance;
-        this.priorité = priorité;
+// ============================================================
+// CONSTRUCTEUR
+// ============================================================
+// Il devra récupérer les valeurs nécessaire à l'instanciation, puis appeler la méthode creerHTML.
+// Lors de la récupération, il faudra mettre l'ID en dernier (paramètre optionnel), avec la valeur par défaut "à créer".
+// Lorsqu'on récupérera, plus tard, les tâches depuis le localStorage, elles auront déjà leur ID. Mais si c'est une nouvelle tâche, elle n'en aura pas, il faudra alors le créer.
 
-        this.creerHTML();
-    }
+// ============================================================
+// MÉTHODES
+// ============================================================
 
-    #créerIdAléatoire() {
-        return Math.floor(Math.random() * 100000);
-    }
+// 1. Commencer par créer les getters et les setters.
+// ID : si il est donné, on lui attribue la valeur donnée, sinon on le crée.
+// titre : rien de particulier pour l'instant (plus tard, on pourra empêcher tous les caractères de code malveillant)
+// échéance : il faudra un setter qui instancie la date selon Date() (voir la doc : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date)
+// il faudra ensuite lui faire deux getters : 
+// - l'un pour afficher la date dans le HTML avec un format lisible par les humains français (voir la doc : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)
+// - l'autre qui la retourne dans le format dans lequel elle a été enregistrée.
 
-    creerHTML() {
-        let HTML = `<div id="tache-${this.id}">
-          <span id="check-${this.id}" class="checkbox">□</span>
-          <div>
-            <h3>${this.titre}</h3>
-            <span class="priorité ${this.priorité.classe}">${this.priorité.intitulé}</span>
-            <span class="dateÉchéance">${this.échéance}</span>
-          </div>
-          <hr>
-        </div>`
-        document.querySelector('.listeDesTaches').innerHTML += HTML;
-    }
+// priorité : un setter qui appelera une méthode privée definirPriorite(priorite), et un getter normal.
 
-    #definirPriorité(priorité) {
-        switch (priorité) {
-            case "basse":
-                return { classe: "basse", intitulé: "Non prioritaire" };
-                break;
-            case "moyenne":
-                return { classe: "moyenne", intitulé: "Prioritaire" };
-                break;
-            case "élevée":
-                return { classe: "élevée", intitulé: "Urgente" };
-                break;
 
-            default:
-                return { classe: "basse", intitulé: "Non prioritaire" };
-                break;
-        }
-    }
+// 2. constuire ensuite la méthode creerIdAleatoire, privée, qui retournera un nombre entier compris entre 0 et 1000000
 
-    get id() {
-        return this.#id;
-    }
-    set id(ID) {
-        this.#id = (ID === "À créer") ? this.#créerIdAléatoire() : this.#créerIdAléatoire();
-    }
-    get titre() {
-        return this.#titre;
-    }
-    set titre(titre) {
-        this.#titre = titre;
-    }
-    get échéance() {
-        return new Intl.DateTimeFormat("fr-FR", { dateStyle: 'long' }).format(new Date(this.#échéance));
-    }
-    get échéanceToDate() {
-        return this.#échéance;
-    }
-    set échéance(échéance) {
-        this.#échéance = new Date(échéance);
-    }
-    get priorité() {
-        return this.#priorité;
-    }
-    set priorité(priorité) {
-        this.#priorité = this.#definirPriorité(priorité);
-    }
+// 3. construire la méthode definirPriorite, qui prendra la priorité donnée en paramètre, eten fonction de sa valeur, renverra un tableau contenant deux valeurs comme ceci :
+// { classe: "basse", intitulé: "Non prioritaire" }
+// la classe permettra de mettre le bon style dans le HTML, tandis que l'intitulé sera ce qui sera affiché à l'utilisateur.
+// Si vous avez un doute, allez voir index.html, les trois tâches écrites en dur vous permettront de comprendre.
 
-    get objetToJSON() {
-        let objet = { id: this.id, titre: this.titre, échéance: this.échéanceToDate, priorité: this.priorité };
-        return objet;
-    }
+// 4. Construire ensuite la méthode creerHTML, qui reprendra justement le html et remplacera les textes, Id et classes par les variables de notre objet Tache. Une fois le HTML prêt il sera ajouté à la liste des tâches dans la page.
 
-}
+// 5. Une dernière méthode nous permettra d'enregistrer les tâches en mémoire dans le localStorage. Pour cela, nous devons donner les 4 propriétés sous un format de tableau, et le retourner. Rien de plus ici, la suite se passe dans la classe Todoliste

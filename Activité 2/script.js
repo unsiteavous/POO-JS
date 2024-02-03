@@ -1,52 +1,16 @@
-// Import des class nécessaires.
-import Tache from "./classes/Tache.js";
-import Todolist from "./classes/Todolist.js";
+// 1. Import des class nécessaires.
 
-const titreTache = document.querySelector('#titreTache');
-const échéanceTache = document.querySelector('#échéanceTache');
-const prioritéTache = document.querySelector('#prioritéTache');
-const submitButton = document.querySelector('.submitButton');
-const ordreButton = document.querySelector('.ordre');
-const filtreButton = document.querySelector('#filtre');
-let listeDesTaches = new Todolist();
-casesCochables();
+// 2. Récupérez tous les éléments HTML avec lesquels vous devrez interagir :
 
-submitButton.addEventListener('click', () => {
-  listeDesTaches.EnregistrerNouvelleTache(new Tache(titreTache.value, échéanceTache.value, prioritéTache.value));
-  document.querySelector('center') ? document.querySelector('center').remove() : '';
-  casesCochables();
-})
+// 3. Instanciez votre classe Todolist pour pouvoir travailler avec :
 
-ordreButton.addEventListener('click', () => {
-  listeDesTaches.trierLesTaches();
-  casesCochables();
-})
-filtreButton.addEventListener('change', () => {
-  listeDesTaches.trierLesTaches();
-  casesCochables();
-})
-
-function casesCochables() {
-  let checkboxes = document.querySelectorAll('.checkbox');
-  
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('click', () => {
-      checkbox.classList.toggle('checked')
-      let id = 'tache-' + checkbox.id.split('-')[1];
-      animationSuppression(id);
-      setTimeout(()=>{
-        
-        // suppression
-        if (checkbox.classList.contains('checked')) {
-          listeDesTaches.supprimerLaTache(id);
-          document.getElementById(id).remove();
-        }
-      },8000)
-    })
-  })
-}
-
-function animationSuppression(id){
-  document.querySelector(`#${id} hr`).classList.toggle('fullHr');
-  document.querySelector(`#${id}`).classList.toggle('disappear');
-}
+/** 4. Construire les addEventListeners suivant et leurs fonctions :
+ * - Quand on clique sur le bouton ajouter, une nouvelle tâche est créée
+ * - Quand on clique sur la flèche à droite des filtres, elle change de sens (▲ ou ▼), et change aussi l'ordre des tâches
+ * - Quand on sélectionne un filtre, les tâches sont triées
+ * - Créer une fonction casesCochables qui récupère toutes les .checkbox, et écoute le clic sur chacune d'elles.
+ * - Cette fonction devra être appelée à plusieurs moments, car lors de l'ajout d'une tâche, il faudra qu'on puisse cliquer sur sa case à cocher aussi !
+ * - Quand on clique sur l'une des cases à cocher d'une des tâches, la tache est supprimée au bout de 8 secondes, 
+ * - Une petite fonction d'animation rendra la suppression intuitive, avec la barre hr qui utilise la classe .fullHr, et la tache qui disparait avec .disappear
+ * - Dans le cas où il n'y a aucune tâche, on affichera le message "Vous n'avez pas encore de tâches !"
+ */

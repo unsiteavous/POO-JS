@@ -1,6 +1,7 @@
+// On commence par importer la classe Tache
 import Tache from './Tache.js';
 
-export default class Todolist {
+export default class Todoliste {
   #listeTaches = [];
 
   /**
@@ -10,7 +11,7 @@ export default class Todolist {
   ordreTriDefaut = "▼";
 
   constructor() {
-    this.#récupérerListeDuLocalStorage();
+    this.#recupererListeDuLocalStorage();
     this.afficherLesTaches();
   }
 
@@ -30,7 +31,7 @@ export default class Todolist {
     localStorage.setItem('listeTaches', JSON.stringify(listeTachesJSON));
   }
 
-  #récupérerListeDuLocalStorage() {
+  #recupererListeDuLocalStorage() {
     if (localStorage.getItem('listeTaches')) {
       let tachesJSON = JSON.parse(localStorage.getItem('listeTaches'));
 
@@ -42,7 +43,7 @@ export default class Todolist {
 
       for (let TacheAConstruire in tachesJSON) {
         TacheAConstruire = tachesJSON[TacheAConstruire];
-        let ObjetTache = new Tache(TacheAConstruire.titre, TacheAConstruire.échéance, TacheAConstruire.priorité.classe, TacheAConstruire.id);
+        let ObjetTache = new Tache(TacheAConstruire.titre, TacheAConstruire.echeance, TacheAConstruire.priorite.classe, TacheAConstruire.id);
         this.listeTaches.push(ObjetTache);
       }
     } else {
@@ -85,18 +86,19 @@ export default class Todolist {
     }
   }
 
-  trierLesTaches() {
-    // document.querySelector('.listeDesTaches').innerHTML = "";
+  trierLesTaches(boutonClicked) {
     const filtre = document.getElementById('filtre');
     const ordre = document.querySelector('.ordre');
-    if (ordre.textContent === this.ordreTriDefaut) {
-      ordre.textContent = "▲";
-      ordre.style.paddingTop = 0;
-      ordre.style.paddingBottom = "2px";
-    } else {
-      ordre.textContent = "▼";
-      ordre.style.paddingTop = "2px";
-      ordre.style.paddingBottom = 0;
+    if (boutonClicked === 'ordre') {
+      if (ordre.textContent === this.ordreTriDefaut) {
+        ordre.textContent = "▲";
+        ordre.style.paddingTop = 0;
+        ordre.style.paddingBottom = "2px";
+      } else {
+        ordre.textContent = "▼";
+        ordre.style.paddingTop = "2px";
+        ordre.style.paddingBottom = 0;
+      }
     }
     this.#triDuTableau(filtre.value, ordre.textContent);
     this.afficherLesTaches();
@@ -104,10 +106,10 @@ export default class Todolist {
 
   #triDuTableau(filtre, ordre) {
     switch (filtre) {
-      case "priorité":
-        this.#TriParPriorité(ordre);
+      case "priorite":
+        this.#triParPriorite(ordre);
         break;
-      case "dateÉchéance":
+      case "dateEcheance":
         this.#triParDate(ordre);
         break;
       case "alpha":
@@ -119,12 +121,12 @@ export default class Todolist {
     }
   }
 
-  #TriParPriorité(ordre) {
+  #triParPriorite(ordre) {
     let tri = [];
     for (let i = 0; i < 3; i++) {
-      let prio = (i === 0) ? "élevée" : (i === 1) ? "moyenne" : "basse";
+      let prio = (i === 0) ? "elevee" : (i === 1) ? "moyenne" : "basse";
       this.#listeTaches.forEach(tache => {
-        if (tache.priorité.classe === prio) {
+        if (tache.priorite.classe === prio) {
           tri.push(tache);
         }
       })
@@ -137,9 +139,9 @@ export default class Todolist {
   }
 
   #triParDate(ordre) {
-    function dateEcheance(a, b) {
-      a = new Date(a.échéanceToDate);
-      b = new Date(b.échéanceToDate);
+    function comparaisonDate(a, b) {
+      a = new Date(a.echeanceToDate);
+      b = new Date(b.echeanceToDate);
       if (a < b) {
         return -1;
       }
@@ -148,7 +150,7 @@ export default class Todolist {
       }
       return 0;
     }
-    this.#listeTaches.sort(dateEcheance);
+    this.#listeTaches.sort(comparaisonDate);
 
     if (ordre !== this.ordreTriDefaut) {
       this.#listeTaches = this.#listeTaches.reverse();
@@ -156,7 +158,7 @@ export default class Todolist {
   }
 
   #triParAlpha(ordre) {
-    function alpha(a, b) {
+    function comparaisonAlpha(a, b) {
       a = a.titre.toLowerCase()
       b = b.titre.toLowerCase()
       if (a < b) {
@@ -167,7 +169,7 @@ export default class Todolist {
       }
       return 0;
     }
-    this.#listeTaches.sort(alpha);
+    this.#listeTaches.sort(comparaisonAlpha);
 
     if (ordre !== this.ordreTriDefaut) {
       this.#listeTaches = this.#listeTaches.reverse();

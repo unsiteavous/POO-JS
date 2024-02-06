@@ -3,51 +3,51 @@
 // - le périmètre, qui est à null par défaut
 // - l'aire, qui a aussi des valeurs par défaut.
 class Forme {
-  _id; // permet de différencier les éléments entre eux
-  _perimetre = 1; // donne la largeur de la bordure
-  _aire = {"width": 100, "height": 400, "background": "chartreuse"}; // donne les éléments du polygone
+  #id; // permet de différencier les éléments entre eux
+  #perimetre = 1; // donne la largeur de la bordure
+  #aire = {"width": 100, "height": 400, "background": "chartreuse"}; // donne les éléments du polygone
 
   // Lors de l'initialisation de la classe, on crée un élément visible sur la page.
   constructor(width, height, background) {
     // On verifie si on nous a donné des paramètres, sinon on garde ceux par défaut.
     if (width) {
-      this._aire["width"] = width;
+      this.#aire["width"] = width;
     }
     if(height){
-      this._aire["height"] = height;
+      this.#aire["height"] = height;
     }
     if (background) {
-      this._aire["background"] = background;
+      this.#aire["background"] = background;
     }
 
-    this._id = idAleatoire(0,1000000000000000000); // on donne un id aléatoire.
+    this.#id = idAleatoire(0,1000000000000000000); // on donne un id aléatoire.
 
     // On publie la forme sur la page, avec les propriétés choisies.
     let divMain = document.getElementById('main');
-    divMain.innerHTML += '<div id="'+this._id+'" style="width:'+this._aire['width']+'px; height:'+this._aire['height']+'px; background-color:'+this._aire['background']+'; border:'+this._perimetre+'px solid black;"></div>';
+    divMain.innerHTML += '<div id="'+this.#id+'" style="width:'+this.#aire['width']+'px; height:'+this.#aire['height']+'px; background-color:'+this.#aire['background']+'; border:'+this.#perimetre+'px solid black;"></div>';
   }
 
   // Permet de récupérer la couleur
   get couleur() {
-    return "La couleur est " + this._aire['background'];
+    return "La couleur est " + this.#aire['background'];
   }
   // change la couleur de la forme
-  set couleur(nouvelle_couleur){
-    this._aire['background'] = nouvelle_couleur;
-    let formeAColorier = document.getElementById(this._id);
-    formeAColorier.style.backgroundColor = nouvelle_couleur;
+  set couleur(nouvelle#couleur){
+    this.#aire['background'] = nouvelle#couleur;
+    let formeAColorier = document.getElementById(this.#id);
+    formeAColorier.style.backgroundColor = nouvelle#couleur;
   }
 
   // Permet de récupérer la largeur.
   get largeur() {
-    return this._aire['width'];
+    return this.#aire['width'];
   }
 
   // Change la largeur de la forme
-  set largeur(nouvelle_largeur) {
-    this._aire['width'] = nouvelle_largeur;
-    let formeAModifier = document.getElementById(this._id);
-    formeAModifier.style.width = nouvelle_largeur + 'px';
+  set largeur(nouvelle#largeur) {
+    this.#aire['width'] = nouvelle#largeur;
+    let formeAModifier = document.getElementById(this.#id);
+    formeAModifier.style.width = nouvelle#largeur + 'px';
   }
 
 }
@@ -61,17 +61,17 @@ class Carre extends Forme {
 
   // Ici on demande de nous renvoyer la largeur et la hauteur, qui sont les mêmes.
   get largeur() {
-    return super.largeur + ', ' + this._aire['height'];
+    return super.largeur + ', ' + this.#aire['height'];
   }
 
   // On modifie la largeur en faisant appel au parent,
   // puis on modifie la hauteur, ce que le parent ne fait pas.
-  set largeur(nouveau_cote) {
-    super.largeur = nouveau_cote;
+  set largeur(nouveau#cote) {
+    super.largeur = nouveau#cote;
 
-    this._aire['height'] = nouveau_cote;
-    var rond = document.getElementById(this._id);
-    rond.style.height = nouveau_cote + 'px';
+    this.#aire['height'] = nouveau#cote;
+    var rond = document.getElementById(this.#id);
+    rond.style.height = nouveau#cote + 'px';
   }
 
 }
@@ -79,12 +79,12 @@ class Carre extends Forme {
 
 // Une classe enfant qui permet de faire des ronds.
 class Rond extends Carre {
-  _radius = 100;
+  #radius = 100;
 
   constructor(diametre,background) {
     super(diametre, background); // Appelle le parent pour créer une forme
-    var rond = document.getElementById(this._id); // récupère l'id pour lui appliquer un filtre supplémentaire
-    rond.style.borderRadius = this._radius+'%'; // applique le filtre.
+    var rond = document.getElementById(this.#id); // récupère l'id pour lui appliquer un filtre supplémentaire
+    rond.style.borderRadius = this.#radius+'%'; // applique le filtre.
   }
 }
 

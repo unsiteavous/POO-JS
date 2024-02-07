@@ -1,7 +1,9 @@
 import BarreDeVie from "./BarreDeVie.js";
 // On prépare le tableau qui contiendra toutes nos barres de vies.
-const tableau = []
+const tableau = [];
 // On instancie ensuite notre classe.
+tableau.push(new BarreDeVie());
+tableau.push(new BarreDeVie());
 tableau.push(new BarreDeVie());
 
 // On lit le tableau, pour retrouver toutes les barres :

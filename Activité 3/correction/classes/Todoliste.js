@@ -25,7 +25,7 @@ export default class Todoliste {
 
   #enregistrerListeDansLocalStorage() {
     let listeTachesJSON = {};
-    this.#listeTaches.forEach(Tache => {
+    this.listeTaches.forEach(Tache => {
       listeTachesJSON["tache " + Tache.id] = Tache.objetToJSON;
     })
     localStorage.setItem('listeTaches', JSON.stringify(listeTachesJSON));
@@ -53,8 +53,8 @@ export default class Todoliste {
 
   afficherLesTaches() {
     document.querySelector('.listeDesTaches').innerHTML = "";
-    if (this.#listeTaches.length > 0) {
-      this.#listeTaches.forEach(tache => {
+    if (this.listeTaches.length > 0) {
+      this.listeTaches.forEach(tache => {
         tache.creerHTML();
       });
     } else {
@@ -67,21 +67,21 @@ export default class Todoliste {
   }
 
   EnregistrerNouvelleTache(tache) {
-    this.#listeTaches.push(tache);
+    this.listeTaches.push(tache);
     this.#enregistrerListeDansLocalStorage();
   }
 
   supprimerLaTache(idTache) {
     idTache = idTache.split("-")[1];
     let newListe = [];
-    this.#listeTaches.forEach(tache => {
+    this.listeTaches.forEach(tache => {
       if (tache.id != idTache) {
         newListe.push(tache);
       }
     })
-    this.#listeTaches = newListe;
+    this.listeTaches = newListe;
     this.#enregistrerListeDansLocalStorage();
-    if (this.#listeTaches.length === 0) {
+    if (this.listeTaches.length === 0) {
       this.afficherPasDeTache();
     }
   }
@@ -125,16 +125,16 @@ export default class Todoliste {
     let tri = [];
     for (let i = 0; i < 3; i++) {
       let prio = (i === 0) ? "elevee" : (i === 1) ? "moyenne" : "basse";
-      this.#listeTaches.forEach(tache => {
+      this.listeTaches.forEach(tache => {
         if (tache.priorite.classe === prio) {
           tri.push(tache);
         }
       })
     }
     if (ordre === this.ordreTriDefaut) {
-      this.#listeTaches = tri;
+      this.listeTaches = tri;
     } else {
-      this.#listeTaches = tri.reverse();
+      this.listeTaches = tri.reverse();
     }
   }
 
@@ -150,10 +150,10 @@ export default class Todoliste {
       }
       return 0;
     }
-    this.#listeTaches.sort(comparaisonDate);
+    this.listeTaches.sort(comparaisonDate);
 
     if (ordre !== this.ordreTriDefaut) {
-      this.#listeTaches = this.#listeTaches.reverse();
+      this.listeTaches = this.listeTaches.reverse();
     }
   }
 
@@ -169,10 +169,10 @@ export default class Todoliste {
       }
       return 0;
     }
-    this.#listeTaches.sort(comparaisonAlpha);
+    this.listeTaches.sort(comparaisonAlpha);
 
     if (ordre !== this.ordreTriDefaut) {
-      this.#listeTaches = this.#listeTaches.reverse();
+      this.listeTaches = this.listeTaches.reverse();
     }
   }
 } 

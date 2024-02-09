@@ -52,7 +52,7 @@ export default class Tache {
         return this.#id;
     }
     set id(ID) {
-        this.#id = (ID === "À créer") ? this.#creerIdAleatoire() : this.#creerIdAleatoire();
+        this.#id = (ID === "À créer") ? this.#creerIdAleatoire() : ID;
     }
     get titre() {
         return this.#titre;
@@ -81,4 +81,5 @@ export default class Tache {
         return objet;
     }
 
+    
 }

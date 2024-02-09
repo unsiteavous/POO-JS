@@ -1,10 +1,10 @@
-// On definit la classe Todolist, exportable et par defaut :
+// On définit la classe Tache, exportable et par défaut :
 // ============================================================
 // Tache
 // ============================================================
     
-// On definit ensuite 4 proprietes privees :
-// - #id : il sera construit aleatoirement
+// On définit ensuite 4 propriétés privées :
+// - #id : il sera construit aléatoirement
 // - #titre
 // - #echeance
 // - #priorite : trois valeurs possibles [basse, moyenne, elevee]

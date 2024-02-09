@@ -40,4 +40,4 @@
 
 // 4. Construire ensuite la méthode creerHTML, qui reprendra justement le html et remplacera les textes, Id et classes par les variables de notre objet Tache. Une fois le HTML prêt il sera ajouté à la liste des tâches dans la page.
 
-// 5. Une dernière méthode nous permettra d'enregistrer les tâches en mémoire dans le localStorage. Pour cela, nous devons donner les 4 propriétés sous un format de tableau, et le retourner. Rien de plus ici, la suite se passe dans la classe Todoliste
+// 5. Une dernière méthode nous permettra d'enregistrer plus tard les tâches en mémoire dans le localStorage. Pour cela, nous devons donner les 4 propriétés sous un format de tableau, et le retourner. Rien de plus ici, la suite se passe dans la classe Todoliste

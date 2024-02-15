@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO LIST</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" type="module"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>TODO LISTE</h1>
+    <div class="creerNouvelleTache">
+      <h2>Créer une nouvelle tâche</h2>
+      <div>
+        <label for="titreTache">Titre de la tâche : </label>
+        <input type="text" name="titreTache" id="titreTache" />
+      </div>
+      <div>
+        <label for="echeanceTache">Date limite de réalisation : </label>
+        <input type="date" name="echeanceTache" id="echeanceTache" />
+      </div>
+      <div>
+        <label for="prioriteTache">Niveau de priorité de la tâche : </label>
+        <select name="prioriteTache" id="prioriteTache">
+          <option value="basse">Non prioritaire</option>
+          <option value="moyenne">Prioritaire</option>
+          <option value="elevee">Urgente</option>
+        </select>
+      </div>
+      <button class="submitButton">Ajouter une tâche</button>
+    </div>
+    <div id="outils">
+      <h2>Listes des tâches</h2>
+      <div>
+        <p>Filtrer par :</p>
+        <select name="filtre" id="filtre">
+          <option value="priorite">Priorité</option>
+          <option value="dateEcheance">Date d'échéance</option>
+          <option value="alpha">Ordre alphabétique</option>
+        </select>
+        <p class="ordre">▼</p>
+      </div>
+    </div>
+    <div class="listeDesTaches">
+      <div id="tache-1">
+        <span id="check-1" class="checkbox">□</span>
+        <div>
+          <h3>titre de la tache</h3>
+          <span class="priorite basse">Non prioritaire</span>
+          <span class="dateEcheance">14 février 2024</span>
+          <hr>
+        </div>
+      </div>
+      <div id="tache-2">
+        <span id="check-2" class="checkbox">□</span>
+        <div>
+          <h3>titre de la tache</h3>
+          <span class="priorite moyenne">Prioritaire</span>
+          <span class="dateEcheance">20 février 2024</span>
+          <hr>
+        </div>
+      </div>
+      <div id="tache-3">
+        <span id="check-3" class="checkbox">□</span>
+        <div>
+          <h3>titre de la tache</h3>
+          <span class="priorite elevee">Urgente</span>
+          <span class="dateEcheance">10 février 2024</span>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>Made with ❤️ by <a href="https://unsiteavous.fr/" target="_blank">UnSiteAVous</a>. View code on <a
+      href="https://gitlab.com/unsiteavous/todo-liste" target="_blank">gitlab</a>.</p>
+</body>
+
+</html>

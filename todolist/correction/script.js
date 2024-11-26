@@ -62,7 +62,6 @@ function casesCochables() {
 
           }, 6000)
         })
-        console.log(intervals)
       } else {
         intervals.forEach(interval => {
           if (interval.id === id) {
@@ -70,7 +69,6 @@ function casesCochables() {
             intervals.splice(intervals.indexOf(interval), 1);
           }
         })
-        console.log(intervals)
       }
     })
   })

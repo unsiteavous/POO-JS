@@ -9,6 +9,7 @@ const submitButton = document.querySelector('.submitButton');
 const ordreButton = document.querySelector('.ordre');
 const filtreButton = document.querySelector('#filtre');
 let listeDesTaches = new Todoliste();
+let intervals = [];
 casesCochables();
 
 submitButton.addEventListener('click', () => {
@@ -50,14 +51,27 @@ function casesCochables() {
       checkbox.classList.toggle('checked')
       let id = 'tache-' + checkbox.id.split('-')[1];
       animationSuppression(id);
-      setTimeout(() => {
+      if (checkbox.classList.contains('checked')) {
+        intervals.push({
+          id: id,
+          set: setTimeout(() => {
 
-        // suppression
-        if (checkbox.classList.contains('checked')) {
-          listeDesTaches.supprimerLaTache(id);
-          document.getElementById(id).remove();
-        }
-      }, 8000)
+            // suppression
+            listeDesTaches.supprimerLaTache(id);
+            document.getElementById(id).remove();
+
+          }, 6000)
+        })
+        console.log(intervals)
+      } else {
+        intervals.forEach(interval => {
+          if (interval.id === id) {
+            clearTimeout(interval.set);
+            intervals.splice(intervals.indexOf(interval), 1);
+          }
+        })
+        console.log(intervals)
+      }
     })
   })
 }

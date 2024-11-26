@@ -1,0 +1,91 @@
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 80%;
+  }
+
+  .creerNouvelleTache {
+    width: 80%;
+  }
+
+  .listeDesTaches>div>div>div {
+    flex-direction: column;
+    align-items: end;
+  }
+
+  .priorite {
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+
+  .basse,
+  .moyenne,
+  .elevee {
+    margin-left: 0px;
+  }
+
+  .listeDesTaches h3 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .container {
+    margin-top: 100px;
+  }
+
+  #outils {
+    flex-direction: column;
+  }
+
+  #outils h2 {
+    margin-bottom: 0;
+  }
+
+  .listeDesTaches>div>div {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .listeDesTaches>div>div>div {
+    align-items: center;
+    width: 100%;
+    margin: 0px;
+  }
+
+  .priorite {
+    margin: 10px 0 0;
+  }
+
+  .listeDesTaches h3 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    margin: 10px auto;
+  }
+
+  .creerNouvelleTache {
+    width: 100%;
+  }
+
+  .creerNouvelleTache>div {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .creerNouvelleTache h2 {
+    margin-bottom: 10px;
+  }
+
+  #titreTache {
+    width: -moz-available;
+    width: -webkit-fill-available;
+  }
+
+  hr {
+    opacity: 0 !important;
+  }
+}

@@ -1,5 +1,6 @@
 body * {
     font-family: comfortaa;
+    margin: 0;
 }
 
 body>p {
@@ -20,7 +21,7 @@ h1,
 
 .container {
     margin: 150px auto;
-    width: 50%;
+    width: 900px;
     border: 5px solid gray;
     border-radius: 20px;
     padding: 20px;
@@ -30,7 +31,7 @@ h1,
 .creerNouvelleTache {
     display: flex;
     flex-direction: column;
-    width: max-content;
+    width: 60%;
     margin: 0 auto;
 }
 
@@ -49,7 +50,8 @@ select {
     border: 1px solid grey;
 }
 
-button, select {
+button,
+select {
     cursor: pointer;
 }
 
@@ -98,7 +100,6 @@ select:focus {
 .listeDesTaches h3 {
     margin: 0;
     width: 60%;
-    margin-top: -10px
 }
 
 .checkbox {
@@ -127,13 +128,24 @@ select:focus {
 .listeDesTaches>div>div {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     width: 100%;
+}
+
+.listeDesTaches>div>div>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    margin-left: 20px;
 }
 
 .priorite {
     border-radius: 10px;
     padding: 5px;
+    white-space: nowrap;
+    margin-right: 10px;
 }
 
 .basse {
@@ -142,18 +154,24 @@ select:focus {
 
 .moyenne {
     background-color: orange;
+    margin-left: 17px;
 }
 
 .elevee {
     background-color: darkred;
     color: white;
+    margin-left: 26px;
+}
+
+.dateEcheance {
+    white-space: nowrap;
 }
 
 hr {
     position: absolute;
     width: 0%;
     left: 50px;
-    top: 19px;
+    top: 50%;
     opacity: 0;
 }
 

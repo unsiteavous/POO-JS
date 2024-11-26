@@ -19,13 +19,15 @@ export default class Tache {
 
     creerHTML() {
         let HTML = `<div id="tache-${this.id}">
-          <span id="check-${this.id}" class="checkbox">□</span>
-          <div>
-            <h3>${this.titre}</h3>
-            <span class="priorite ${this.priorite.classe}">${this.priorite.intitule}</span>
-            <span class="dateEcheance">${this.echeance}</span>
-          </div>
-          <hr>
+            <span id="check-${this.id}" class="checkbox">□</span>
+            <div>
+                <h3>${this.titre}</h3>
+                <div>
+                    <span class="priorite ${this.priorite.classe}">${this.priorite.intitule}</span>
+                    <span class="dateEcheance">${this.echeance}</span>
+                </div>
+            </div>
+            <hr>
         </div>`
         document.querySelector('.listeDesTaches').innerHTML += HTML;
     }
@@ -81,5 +83,5 @@ export default class Tache {
         return objet;
     }
 
-    
+
 }

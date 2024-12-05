@@ -10,7 +10,7 @@ class forme {
    * @param   {number}  ID                           L'ID unique choisi par l'utilisateur
    * @param   {number}  coteDonneParLUtilisateur     TOut est dit dans le nom
    * @param   {string}  couleurDonneParLUtilisateur  couleur de la forme
-   * @return  {void}                               tout se passe dans le HTML
+   * @return  {void}                                 tout se passe dans le HTML
    */
   constructor(ID, coteDonneParLUtilisateur, couleurDonneParLUtilisateur) {
     this.cote = coteDonneParLUtilisateur;
@@ -51,7 +51,7 @@ class carre extends forme {
    * @param   {number}  coteLorsqueUtilisateurInstancieCarre     la longueur du côté donnée par l'utilisateur lors de l'instanciation
    * @param   {string}  couleurLorsqueUtilisateurInstancieCarre  La couleur choisie par l'utiliseur lors de l'instanciation
    *
-   * @return  {void}                                           la modification est directement faite sur le html, on ne retourne rien.
+   * @return  {void}                                             la modification est directement faite sur le html, on ne retourne rien.
    */
   constructor(ID, coteLorsqueUtilisateurInstancieCarre, couleurLorsqueUtilisateurInstancieCarre) {
     super(ID, coteLorsqueUtilisateurInstancieCarre, couleurLorsqueUtilisateurInstancieCarre);

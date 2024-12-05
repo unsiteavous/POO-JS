@@ -30,7 +30,7 @@ En fait, on recrée l'arbre de classification des espèces !
 
 ## Activité Découverte
 
-1. Créez l'arbre de classification en définissant les héritages et les particularités pour l'univers immobilier : maison, appartement, tiny House, yourte, château, ISS, ...  
+1. Créez l'arbre de classification en définissant les héritages et les particularités pour l'univers du logement : maison, appartement, tiny House, yourte, château, ISS, ...  
 
 2. De la même manière, créez l'arbre de classification pour l'univers des desserts, **puis** posez-vous ces questions :
    - Le sans gluten est-il une propriété d'un enfant ou du parent ?

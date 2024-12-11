@@ -10,11 +10,18 @@ Nous on va se faire les nôtres, et pourquoi pas comme une librairie qu'on pourr
     - Quels sont les éléments permanents (padding, ...) ?
     - Quels sont les éléments personnalisables (message, ...) ?
     - Quels sont  les éléments propres à un types de toast (couleur, ...) ?
-  
-2. En groupe, Créer une classe abstraite, générale, qui va permettre de créer l'ossature générale d'un toast.
 
-3. En groupe, Créer une première classe enfant pour les toasts `success`. Pensez à importer la classe parente pour pouvoir l'utiliser.
+2. En groupe, Créer avec JS l'élément HTML dans lequel vont apparaître nos toasts.
 
-4. Seul·e, Créer d'autres classes enfant pour les toasts `error`, `info`, `warning`. 
+3. En groupe, Créer une classe abstraite, générale, qui va permettre de créer l'ossature générale d'un toast.
 
-5. Seul·e, Paramétrer le repository pour pouvoir devenir une librairie à installer dans d'autres projets.
+4. En groupe, Créer une première classe enfant pour les toasts `success`. Pensez à importer la classe parente pour pouvoir l'utiliser.
+
+5. Seul·e, Créer d'autres classes enfant pour les toasts `error`, `info`, `warning`. 
+
+6. Seul·e, Paramétrer le repository pour pouvoir devenir une librairie à installer dans d'autres projets.
+
+## Pour aller plus loin... 
+6. Créer deux thèmes : clair et sombres.
+7. ajouter des animations spécifiques au type de message.
+8. Rendre visible la durée d'affichage du toast avec une barre de progression, avant suppression.

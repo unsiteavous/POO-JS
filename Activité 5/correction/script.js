@@ -5,8 +5,18 @@ import WarningToast from "./JS/WarningToast.js";
 
 SuccessToast.creationZoneDeToasts();
 
+setTimeout(() => {
+  let toast = new SuccessToast("Tu as réussi ton premier toast !");
+}, 1000);
+setTimeout(() => {
+  let toast1 = new ErrorToast("tu n'as pas réussi");
+}, 2000);
+setTimeout(() => {
+  let toast2 = new InfoToast('Ceci est un toast d\'information');
 
-let toast = new SuccessToast("Tu as réussi ton premier toast !");
-let toast1 = new ErrorToast("tu n'as pas réussi"); 
-let toast2 = new InfoToast('Ceci est un toast d\'information');
-let toast3 = new WarningToast('Quelque chose s\'est mal passé');
+}, 3000);
+setTimeout(() => {
+  let toast3 = new WarningToast('Quelque chose s\'est mal passé');
+
+}, 4000);
+

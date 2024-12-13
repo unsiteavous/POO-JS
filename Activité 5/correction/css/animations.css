@@ -30,14 +30,14 @@
 }
 
 @keyframes apparitionSuccess {
-  /* from {
+  from {
     margin-left: -400px;
     opacity: 0;
   }
   to {
     margin-left: 15px;
     opacity: 1;
-  } */
+  }
 }
 
 @keyframes successEffect {

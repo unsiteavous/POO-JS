@@ -75,9 +75,9 @@ export default class Toast {
    */
   #deleteToast() {
     this._toast.classList.remove(this._animationEntree);
-    // this._toast.classList.add('animationSortie');
+    this._toast.classList.add('animationSortie');
     setTimeout(() => {
-      // this.#zoneDeToasts.removeChild(this._toast)  
+      this.#zoneDeToasts.removeChild(this._toast)  
     }, 2000)
   }
 }

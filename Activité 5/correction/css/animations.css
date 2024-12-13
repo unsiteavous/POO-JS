@@ -1,0 +1,101 @@
+.animationSortie {
+  animation: disparitionDefault 2s ease-in forwards;
+}
+
+.animationEntreeInfo {
+  animation: apparitionInfo 2s ease-out forwards;
+}
+
+.animationEntreeError {
+  animation: apparitionError 1s ease-out forwards;
+}
+
+.animationEntreeSuccess {
+  animation: apparitionSuccess 2s ease-out forwards;
+}
+
+.animationEntreeWarning {
+  animation: apparitionWarning 1s ease-out forwards;
+}
+
+@keyframes apparitionInfo {
+  from {
+    margin-left: -400px;
+    opacity: 0;
+  }
+  to {
+    margin-left: 15px;
+    opacity: 1;
+  }
+}
+
+@keyframes apparitionSuccess {
+  /* from {
+    margin-left: -400px;
+    opacity: 0;
+  }
+  to {
+    margin-left: 15px;
+    opacity: 1;
+  } */
+}
+
+@keyframes successEffect {
+  from {
+    left: -200px;
+  }
+  to {
+    left: 400px;
+  }
+}
+
+@keyframes disparitionDefault {
+  from {
+    margin-left: 15px;
+    opacity: 1;
+  }
+  to {
+    margin-left: -400px;
+    opacity: 0;
+  }
+}
+
+@keyframes apparitionError {
+  from {
+    opacity: 0;
+    transform: rotate(5deg);
+  }
+  25% {
+    opacity: 1;
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes apparitionWarning {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}

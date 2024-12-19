@@ -1,3 +1,5 @@
+import { toastDuration } from "./config.js";
+
 export default class Toast {
   #zoneDeToasts;
   #message;
@@ -19,24 +21,19 @@ export default class Toast {
     this.#message = message
   }
 
-  static creationZoneDeToasts() {
-    const zoneDeToasts = document.createElement('div');
-    zoneDeToasts.classList.add('zoneDeToasts');
-    zoneDeToasts.id = "zoneDeToasts";
-    document.body.append(zoneDeToasts);
-  }
-
-  miseEnForme() {
+  miseEnForme(backgroundColor, icone, h4Content, animationEntree) {
     this._toast = document.createElement('div');
-    this._toast.classList.add('toast');
-
+    this._toast.classList.add('toast',animationEntree);
+    this._toast.style.backgroundColor = backgroundColor;
+    
     this._icone = document.createElement('i');
+    this._icone.classList.add(icone);
     this.#cross = document.createElement('i');
     this.#cross.classList.add('close');
-
+    
     const div = document.createElement('div');
     this._h4 = document.createElement('h4');
-    this._h4.textContent = "Success";
+    this._h4.textContent = h4Content;
     const p = document.createElement('p');
     p.textContent = this.#message;
 
@@ -67,7 +64,7 @@ export default class Toast {
   deleteAfterDelay() {
     this.#timeOut = setTimeout(() => {
       this.#deleteToast();
-    }, 3000)
+    }, toastDuration)
   }
 
   /**

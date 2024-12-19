@@ -1,21 +1,18 @@
 import Toast from "./Toast.js";
+import zoneDeToasts from "./ZoneDeToasts.js";
 
 export default class SuccessToast extends Toast {
   constructor(message) {
     super(message);
     this._animationEntree = "animationEntreeSuccess";
-    this.miseEnForme();
+        zoneDeToasts.addToast(this);
   }
 
-  miseEnForme() {
-    super.miseEnForme();
+  miseEnForme(){ 
+    super.miseEnForme("chartreuse",'successIcone',"Succès !",this._animationEntree);
     const effet = document.createElement('span');
     effet.classList.add('successEffect');
     this._toast.append(effet);
-    this._toast.style.backgroundColor = "chartreuse";
-    this._icone.classList.add('successIcone');
-    this._h4.textContent = "Succès !";
-    this._toast.classList.add(this._animationEntree);
 
   }
 

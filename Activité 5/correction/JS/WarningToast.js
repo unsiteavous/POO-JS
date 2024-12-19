@@ -1,19 +1,15 @@
 import Toast from "./Toast.js";
+import zoneDeToasts from "./ZoneDeToasts.js";
 
 export default class WarningToast extends Toast {
   constructor(message) {
     super(message);
     this._animationEntree = "animationEntreeWarning";
-    this.miseEnForme();
+        zoneDeToasts.addToast(this);
   }
 
   miseEnForme() {
-    super.miseEnForme();
-    this._toast.style.backgroundColor = "#ffb300";
-    this._icone.classList.add('warningIcone');
-    this._h4.textContent = "Attention !";
-    this._toast.classList.add(this._animationEntree);
-
+    super.miseEnForme("#ffb300", "warningIcone", "Attention !", this._animationEntree);
   }
 
 }

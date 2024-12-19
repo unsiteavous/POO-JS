@@ -1,3 +1,4 @@
+import { WarningBackgroundColor, WarningTitle } from "./config.js";
 import Toast from "./Toast.js";
 import zoneDeToasts from "./ZoneDeToasts.js";
 
@@ -9,7 +10,7 @@ export default class WarningToast extends Toast {
   }
 
   miseEnForme() {
-    super.miseEnForme("#ffb300", "warningIcone", "Attention !", this._animationEntree);
+    super.miseEnForme(WarningBackgroundColor, "warningIcone", WarningTitle, this._animationEntree);
   }
 
 }

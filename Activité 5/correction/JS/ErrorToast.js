@@ -1,3 +1,4 @@
+import { ErrorBackgroundColor, ErrorTitle } from "./config.js";
 import Toast from "./Toast.js";
 import zoneDeToasts from "./ZoneDeToasts.js";
 
@@ -10,6 +11,6 @@ export default class ErrorToast extends Toast {
   }
 
   miseEnForme() {
-    super.miseEnForme("#ff9898",'errorIcone', "Erreur !", this._animationEntree);
+    super.miseEnForme(ErrorBackgroundColor,'errorIcone', ErrorTitle, this._animationEntree);
   }
 }

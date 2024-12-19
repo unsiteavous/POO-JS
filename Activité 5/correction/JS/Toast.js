@@ -23,14 +23,14 @@ export default class Toast {
 
   miseEnForme(backgroundColor, icone, h4Content, animationEntree) {
     this._toast = document.createElement('div');
-    this._toast.classList.add('toast',animationEntree);
+    this._toast.classList.add('toast', animationEntree);
     this._toast.style.backgroundColor = backgroundColor;
-    
+
     this._icone = document.createElement('i');
     this._icone.classList.add(icone);
     this.#cross = document.createElement('i');
     this.#cross.classList.add('close');
-    
+
     const div = document.createElement('div');
     this._h4 = document.createElement('h4');
     this._h4.textContent = h4Content;
@@ -62,9 +62,15 @@ export default class Toast {
    *
    */
   deleteAfterDelay() {
-    this.#timeOut = setTimeout(() => {
-      this.#deleteToast();
-    }, toastDuration)
+    let duration = toastDuration;
+    if(!Number.isInteger(duration)){
+      duration = 3000;
+    }
+    if (duration > 0) {
+      this.#timeOut = setTimeout(() => {
+        this.#deleteToast();
+      }, duration)
+    }
   }
 
   /**
@@ -74,7 +80,7 @@ export default class Toast {
     this._toast.classList.remove(this._animationEntree);
     this._toast.classList.add('animationSortie');
     setTimeout(() => {
-      this.#zoneDeToasts.removeChild(this._toast)  
+      this.#zoneDeToasts.removeChild(this._toast)
     }, 2000)
   }
 }

@@ -24,10 +24,10 @@ export default class zoneDeToasts {
   static loadAnimationStyleSheet() {
     let animationStyle = document.createElement("link");
     animationStyle.rel = "stylesheet";
-    if (position == "bottom-left" || position == "top-left") {
-      animationStyle.href = "./css/animations-left.css";
-    } else {
+    if (position == "bottom-right" || position == "top-right") {
       animationStyle.href = "./css/animations-right.css";
+    } else {
+      animationStyle.href = "./css/animations-left.css";
     }
     document.head.appendChild(animationStyle);
   }

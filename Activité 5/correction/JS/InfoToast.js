@@ -1,3 +1,4 @@
+import { InfoBackgroundColor, InfoTitle } from "./config.js";
 import Toast from "./Toast.js";
 import zoneDeToasts from "./ZoneDeToasts.js";
 
@@ -9,6 +10,6 @@ export default class InfoToast extends Toast {
   }
 
   miseEnForme(){
-    super.miseEnForme("#78dfff",'infoIcone', "Info", this._animationEntree);
+    super.miseEnForme(InfoBackgroundColor,'infoIcone', InfoTitle, this._animationEntree);
   }
 }
